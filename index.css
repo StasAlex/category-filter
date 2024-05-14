@@ -1,0 +1,83 @@
+header {
+    h2 {
+        font-size: 28px;
+    }
+}
+body {
+    font-family: "Nunito", sans-serif;
+}
+section {
+    margin: 50px 20px;
+}
+.categories h2,
+.filter h2,
+.products h2 {
+    display: none;
+}
+.data-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.filter .card-title,
+.categories .card-title {
+    margin-bottom: 0;
+}
+.card {
+    margin: 0 20px 20px 0;
+    cursor: pointer;
+}
+.card.disabled {
+    cursor: not-allowed;
+    color: grey
+}
+.products .data-container {
+    justify-content: space-between;
+}
+.products .card {
+    width: 100%;
+    margin: 0 0 2%;
+    background: #f5f2ed;
+}
+@media screen and (min-width: 480px) {
+    .products .card {
+        width: 49%;
+        background: #f5f2ed;
+    }
+}
+.products .card-title {
+    font-weight: 700;
+}
+.section-card {
+    margin-bottom: 15px;
+
+    .card-body {
+        background-color: #f5f2ed;
+
+        h5 {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 12px;
+        }
+    }
+}
+.filter .card {
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+.filter .card-body {
+    padding: 0 5px 5px;
+    font-size: 20px;
+}
+.clear-filter {
+    color: white;
+    background: black;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.card.hide {
+    display: none;
+}
