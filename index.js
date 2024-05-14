@@ -123,6 +123,15 @@ function addSpinner() {
 
     return spinner;
 }
+function  onClearButtonCreate(section) {
+    const clearButton = $('.clear-filter');
+    if(!clearButton.length) {
+        clearFilterAdd($(section));
+    } else {
+        clearButton.remove();
+        clearFilterAdd($(section));
+    }
+}
 async function init() {
     addSpinner();
     const products = await fetchDataFromGoogleSheets();
@@ -179,9 +188,8 @@ async function init() {
                 $(product).addClass('hide')
             }
         });
-        if(!$('.clear-filter').length) {
-            clearFilterAdd($('.categories'));
-        }
+
+        onClearButtonCreate('.categories')
     })
 
     $('.filter .card-title').on('click', function() {
@@ -195,9 +203,8 @@ async function init() {
                 $(product).addClass('hide')
             }
         });
-        if(!$('.clear-filter').length) {
-            clearFilterAdd($('.filter'));
-        }
+
+        onClearButtonCreate('.filter')
     })
 }
 init();

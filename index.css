@@ -11,7 +11,7 @@ body {
     font-family: "Nunito", sans-serif;
 }
 section {
-    margin: 50px 20px;
+    margin: 0 20px 50px;
 }
 .categories h2,
 .filter h2,
