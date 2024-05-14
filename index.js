@@ -1,4 +1,3 @@
-
 async function fetchDataFromGoogleSheets() {
     try {
         const response = await fetch("https://script.google.com/macros/s/AKfycbwOz0pRAqb9bTXvXq_KS-oEKXdNajPKcpGeSz6t0lqx5CnvTKxRLTt9NXLzgWsG8qZgcw/exec");
@@ -9,7 +8,6 @@ async function fetchDataFromGoogleSheets() {
         return null;
     }
 }
-
 function createCard(container, product) {
     const card = document.createElement('div');
     card.classList.add('card');
@@ -62,7 +60,6 @@ function createSection(container, product) {
 
     container.appendChild(card);
 }
-
 function addSection(root, sectionData) {
     const section = document.createElement('section');
     const headerClassName = sectionData.header.replace(/ /g, '-').toLowerCase(); // replace spaces with dashes
@@ -96,11 +93,8 @@ function addSection(root, sectionData) {
     }
 
     row.appendChild(dataContainer);
-
-
     document.getElementById('root').appendChild(section);
 }
-
 function genCharArray(charA, charZ) {
     var a = [], i = charA.charCodeAt(0), j = charZ.charCodeAt(0);
     for (; i <= j; ++i) {
@@ -108,7 +102,6 @@ function genCharArray(charA, charZ) {
     }
     return a;
 }
-
 function clearFilterAdd(section) {
     const clearButton = document.createElement('span');
     clearButton.classList.add('clear-filter');
@@ -121,8 +114,17 @@ function clearFilterAdd(section) {
         $(this).remove();
     })
 }
+function addSpinner() {
+    const spinner = document.createElement('div');
+    spinner.id = 'spinner';
+    spinner.innerHTML = `<div class="spinner-inner"></div>`;
+    const root = document.getElementById('root');
+    root.appendChild(spinner);
 
+    return spinner;
+}
 async function init() {
+    addSpinner();
     const products = await fetchDataFromGoogleSheets();
     const categories = await products.map(product =>  {
         return product.category.split(',').map(category => category.trim().toUpperCase());
@@ -144,6 +146,8 @@ async function init() {
         header: 'Products',
         data: products
     });
+
+    $('#spinner').hide();
 
     const productCards = $('.products .card');
     const filterCards = $('.filter .card');
@@ -196,5 +200,4 @@ async function init() {
         }
     })
 }
-
 init();
