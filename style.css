@@ -6,7 +6,7 @@ body {
     box-sizing: border-box;
 }
 section {
-    margin: 0 20px 50px;
+    margin: 50px 20px;
 }
 .categories h2,
 .filter h2,
